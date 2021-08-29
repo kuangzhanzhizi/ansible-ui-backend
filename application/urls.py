@@ -63,4 +63,5 @@ urlpatterns = [
     re_path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     re_path(r'^project/', include('apps.project.urls')),
     re_path(r'^api/node/', include('apps.node.urls')),
+    re_path(r'^manager/', include('apps.manager.urls')),
 ]
