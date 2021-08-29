@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     'apps.vadmin.celery',
     'apps.vadmin.monitor',
     'apps.project',
-    'apps.node',
     'apps.manager',
 ]
 
