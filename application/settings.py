@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'apps.vadmin.monitor',
     'apps.project',
     'apps.manager',
+    'apps.ansible',
 ]
 
 MIDDLEWARE = [

@@ -25,6 +25,9 @@ class ProjectCreateUpdateSerializer(CustomModelSerializer):
     def validate(self, attrs: dict):
         return super().validate(attrs)
 
+    def create(self, validated_data):
+        pass
+
     class Meta:
         model = Project
         fields = '__all__'
@@ -45,6 +48,5 @@ class ExportProjectSerializer(CustomModelSerializer):
 
     class Meta:
         model = Project
-        fields = ('id', 'name', 'code', 'person', 'person__username', 'dept', 'dept__deptName', 'creator', 'modifier',
-                  'description')
+        fields = '__all__'
 
