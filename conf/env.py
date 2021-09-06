@@ -1,3 +1,4 @@
+import os
 
 # ================================================= #
 # ************** mysql数据库 配置  ************** #
@@ -22,7 +23,7 @@ DATABASE_NAME = "django-vue-admin"
 # 注：不使用redis则无法使用celery
 REDIS_ENABLE = True
 REDIS_DB = 1
-REDIS_HOST = '127.0.0.1'
+REDIS_HOST = "redis" if os.getenv('ENV') == "Docker" else "127.0.0.1"
 REDIS_PORT = 10379
 REDIS_PASSWORD = ''
 # celery 定时任务redis 库号
@@ -46,3 +47,22 @@ API_LOG_METHODS = ['POST', 'DELETE', 'PUT'] # 'ALL' or ['POST', 'DELETE']
 INTERFACE_PERMISSION = True
 # 是否开启登录ip转换成城市位置
 ENABLE_LOGIN_LOCATION = True
+
+# ================================================= #
+# ************** celery 配置  ************** #
+# ================================================= #
+task_db = broker_db = 11
+result_db = 12
+BROKER = "redis://:%s@%s:10379/%s" % (REDIS_PASSWORD, REDIS_HOST, broker_db)
+BACKEND = "redis://:%s@%s:10379/%s" % (REDIS_PASSWORD, REDIS_HOST, result_db)
+
+# ================================================= #
+# ************** ansible 配置  ************** #
+# ================================================= #
+
+ansible_remote_user = "root"
+ansible_result_redis_db = 10
+# ansible_callback_redis_addr = "10.20.88.215"
+# ansible_callback_redis_port = 6379
+private_key = 'files/id_rsa'
+inventory = 'scripts/inventory'

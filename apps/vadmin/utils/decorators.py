@@ -14,7 +14,7 @@ from django.utils.decorators import available_attrs
 from rest_framework.response import Response
 from rest_framework_extensions.settings import extensions_api_settings
 
-from application.celery import app
+from application.celery_tasks.main import app
 from apps.vadmin.system.models import CeleryLog
 from apps.vadmin.utils.string_util import bas64_encode_text, bas64_decode_text
 

@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'apps.vadmin.monitor',
     'apps.project',
     'apps.manager',
-    'apps.ansible',
+    'apps.ansibleops',
 ]
 
 MIDDLEWARE = [
@@ -329,9 +329,11 @@ CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
 API_LOG_ENABLE = True
 # API_LOG_METHODS = 'ALL' # ['POST', 'DELETE']
 # API_LOG_METHODS = ['POST', 'DELETE'] # ['POST', 'DELETE']
-BROKER_URL = f'redis://:{REDIS_PASSWORD if REDIS_PASSWORD else ""}@{os.getenv("REDIS_HOST") or REDIS_HOST}:' \
-             f'{REDIS_PORT}/{locals().get("CELERY_DB", 2)}'  # Broker使用Redis
+# BROKER_URL = f'redis://:{REDIS_PASSWORD if REDIS_PASSWORD else ""}@{os.getenv("REDIS_HOST") or REDIS_HOST}:' \
+#              f'{REDIS_PORT}/{locals().get("CELERY_DB", 2)}'  # Broker使用Redis
+BROKER_URL = BROKER
 CELERYBEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'  # Backend数据库
+CELERYD_FORCE = True
 # ================================================= #
 # ************** 其他配置  ************** #
 # ================================================= #
