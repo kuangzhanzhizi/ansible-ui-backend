@@ -1,9 +1,8 @@
-# 测试 Debug
 - hosts: localhost
   vars:
     - content: 'data from yaml'
   tasks:
     - debug:
-        msg: 'Hello, AnsibleUI'
+        msg: 'Hello, world'
     - debug:
         msg: '{{ groups }}'

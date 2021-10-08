@@ -25,8 +25,6 @@ class ProjectCreateUpdateSerializer(CustomModelSerializer):
     def validate(self, attrs: dict):
         return super().validate(attrs)
 
-    def create(self, validated_data):
-        pass
 
     class Meta:
         model = Project

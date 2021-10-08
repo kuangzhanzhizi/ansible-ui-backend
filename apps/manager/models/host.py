@@ -8,9 +8,9 @@ class Host(CoreModel):
     conn_ip = CharField(max_length=80, unique=True, verbose_name='主机IP')
     ansible_user = CharField(max_length=80, default='root', verbose_name='主机用户')
     ansible_pwd = CharField(max_length=80, blank=True, null=True, verbose_name='密码')
-    ssh_key = CharField(max_length=80, default='files/id_rsa', null=True, verbose_name='ssh私匙')
+    ssh_key = CharField(max_length=80, default='files/id_rsa',blank=True, null=True, verbose_name='ssh私匙')
     sys_name = CharField(max_length=80, default='Linux', null=True,  verbose_name='系统名称')
-    groups = ManyToManyField(to="manager.Group", blank=True, related_name='hosts', verbose_name=("主机组"))
+    groups = ManyToManyField(to="manager.Group", blank=True, verbose_name=("主机组"))
 
     class Meta:
         verbose_name = '主机列表'

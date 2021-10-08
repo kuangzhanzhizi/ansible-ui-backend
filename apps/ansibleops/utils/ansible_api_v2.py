@@ -245,7 +245,7 @@ class RedisCallBack(CallbackBase):
         print(u"v2_playbook_on_task_start, 开始任务： uuid: %s ---- task_name:%s" % (task._uuid, task.get_name().strip()))
 
     def v2_runner_on_start(self, host, task, *k, **kw):
-        print('[yellow on blue]v2_runner_on_start: ',host, task)
+        print('[yellow on blue]v2_runner_on_start: ', host, task)
 
     def v2_playbook_on_stats(self, stats, *k, **kw):
         print('v2_playbook_on_stats: ', stats.__dict__)
@@ -353,7 +353,7 @@ class VariableManagerVars(VariableManager):
 
 # 执行 Ansible Playbook
 def AnsiblePlaybookExecApi29(task_id, playbook_path, inventory_data=[], extra_vars={}, inventory_file=None):
-    playbook_path = ['playbooks/test_debug.yml']
+    # playbook_path = ['playbooks/test_debug.yml']
     # print(task_id, playbook_path, inventory_data, extra_vars, inventory_file)
     passwords = ""
     options = get_default_options()
@@ -374,7 +374,6 @@ def AnsiblePlaybookExecApi29(task_id, playbook_path, inventory_data=[], extra_va
         loader=loader,
         passwords={"conn_pass": passwords},
     )
-
     context.CLIARGS = ImmutableDict(options)
     executor.run()
 

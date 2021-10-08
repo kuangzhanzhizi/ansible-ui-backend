@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'apps.project',
     'apps.manager',
     'apps.ansibleops',
+    'apps.statistical',
 ]
 
 MIDDLEWARE = [

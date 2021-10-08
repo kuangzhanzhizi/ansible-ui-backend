@@ -11,7 +11,7 @@ class GroupSerializer(CustomModelSerializer):
 
     class Meta:
         model = Group
-        fields = ('group_name', 'nick_name')
+        fields = ('group_name', 'nick_name', 'id')
 
 
 class HostListSerializer(CustomModelSerializer):
@@ -25,8 +25,19 @@ class HostListSerializer(CustomModelSerializer):
         fields = '__all__'
 
 
+class HostSerializer(CustomModelSerializer):
+    """
+    项目管理 简单序列化器
+    """
+
+    class Meta:
+        model = Host
+        exclude = ('groups', 'update_datetime', 'modifier', 'description', 'dept_belong_id', 'creator')
+
+
 class GroupListSerializer(CustomModelSerializer):
-    hosts = HostListSerializer(many=True)
+
+    hosts = HostSerializer(many=True)
 
     class Meta:
         model = Group
@@ -37,6 +48,11 @@ class GroupCreateUpdateSerializer(CustomModelSerializer):
     """
     项目管理 创建/更新时的列化器
     """
+
+    def create(self, validated_data):
+        hosts = getattr(self.request, 'hosts', None)
+        return super().create(validated_data)
+
 
     # 此处可写定制的 创建/更新 内容
     def validate(self, attrs: dict):

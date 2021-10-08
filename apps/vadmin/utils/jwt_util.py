@@ -41,6 +41,7 @@ def jwt_get_user_secret_key(user):
     """
     return str(user.secret)
 
+
 def jwt_payload_handler(user):
     payload = {
         'user_id': user.pk,

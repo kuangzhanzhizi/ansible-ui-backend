@@ -15,8 +15,10 @@ urlpatterns = [
     #         ProjectModelViewSet.as_view({'get': 'importTemplate', 'post': 'importTemplate'})),
     # 根据playbook查看
     re_path('playbook/detail/(?P<pk>.*)/', PlaybookViewSet.as_view({'get': 'playbook_select'})),
-    re_path('playbook/test', PlaybookViewSet.as_view({'get': 'test_celery'})),
-    re_path('ansible_tasks/', AnsibleTasksViewSet.as_view({'post': 'ansible_task_create'})),
+    # 创建ansible任务
+    re_path('ansible_tasks_create/', AnsibleTasksViewSet.as_view({'post': 'ansible_task_create'})),
+    # 清除废弃剧本
+    re_path('clearplaybook/', PlaybookViewSet.as_view({'post': 'clear_playbook'})),
 ]
 
 urlpatterns += router.urls

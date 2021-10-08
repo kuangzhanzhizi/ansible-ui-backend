@@ -7,6 +7,7 @@ class AnsibleTasks(CoreModel):
     ansible_id = CharField(max_length=80,unique=True, null=True,blank=True)
     celery_id = CharField(max_length=80,unique=True, null=True,blank=True)
     group_name = CharField(max_length=80, null=True, blank=True)
+    task_user = CharField(max_length=80, null=True, blank=True)
     playbook = CharField(max_length=80, null=True, blank=True)
     extra_vars = TextField(blank=True, null=True)
     ansible_result = TextField(blank=True)

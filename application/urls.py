@@ -65,4 +65,5 @@ urlpatterns = [
     # re_path(r'^api/node/', include('apps.node.urls')),
     re_path(r'^api/', include('apps.manager.urls')),
     re_path(r'^api/', include('apps.ansibleops.urls')),
+    re_path(r'^api/', include('apps.statistical.urls')),
 ]

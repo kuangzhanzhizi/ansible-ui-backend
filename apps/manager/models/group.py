@@ -1,5 +1,5 @@
 # from django.conf import settings
-from django.db.models import CharField, IntegerField
+from django.db.models import CharField, IntegerField, ManyToManyField
 from vadmin.op_drf.models import CoreModel
 
 
@@ -12,7 +12,9 @@ class Group(CoreModel):
     )
     group_name = CharField(max_length=80, null=True, verbose_name='主机组')
     nick_name = CharField(max_length=80, unique=True, verbose_name='别名')
+    hosts = ManyToManyField(to="manager.Host", blank=True, verbose_name=("主机"))
     _status = IntegerField(choices=GROUP_STATUS, default=0)
+
 
     class Meta:
         verbose_name = '主机列表'

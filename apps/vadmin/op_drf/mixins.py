@@ -34,7 +34,6 @@ class ListModelMixin(mixins.ListModelMixin):
     继承、增强DRF的CreateModelMixin, 标准化其返回值
     """
     list_serializer_class = None
-
     def list(self, request: Request, *args, **kwargs):
         if hasattr(self, 'handle_logging'):
             self.handle_logging(request, *args, **kwargs)
