@@ -23,7 +23,6 @@ class DashBoardModelViewSet(CustomAPIView):
         playbook_count = Playbook.objects.all().count()
         ansible_task_count = AnsibleTasks.objects.all().count()
         host_count = Host.objects.all().count()
-        print(host_count)
         group_count = Group.objects.all().count()
         return SuccessResponse(data={
             "user_count": user_count,
